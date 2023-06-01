@@ -1,6 +1,13 @@
+import React from 'react';
 import styles from './page.module.css';
 
+function ping() {
+  return fetch('http://localhost:4444/ping').then(res => res.json())
+}
+
 export default async function Index() {
+  const data = await ping();
+
   /*
    * Replace the elements below with your own.
    *
@@ -13,7 +20,7 @@ export default async function Index() {
           <div id="welcome">
             <h1>
               <span> Hello there, </span>
-              Welcome client 👋
+              Welcome client 👋 {`data: ${JSON.stringify(data)}`}
             </h1>
           </div>
 
