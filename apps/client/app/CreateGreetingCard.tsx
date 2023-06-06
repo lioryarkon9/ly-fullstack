@@ -7,12 +7,17 @@ interface FormData {
   habits: string[];
 }
 
+const INITIAL_PERSON: FormData = {
+  name: '',
+  age: '',
+  habits: [],
+};
+
 export const CreateGreetingCard: React.FC = () => {
-  const [birthdayPerson, setBirthdayPerson] = React.useState<FormData>({
-    name: '',
-    age: '',
-    habits: [],
-  });
+  const [birthdayPerson, setBirthdayPerson] =
+    React.useState<FormData>(INITIAL_PERSON);
+
+  const resetForm = () => setBirthdayPerson(INITIAL_PERSON);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -50,7 +55,9 @@ export const CreateGreetingCard: React.FC = () => {
       }),
     })
       .then((res) => res.json())
-      .then((res) => console.log('res: ', res));
+      .then((res) => console.log('res: ', res))
+      .then(() => document.querySelector('#createGreetingCardDialog')?.close())
+      .then(() => resetForm());
   };
 
   const isValidForm =

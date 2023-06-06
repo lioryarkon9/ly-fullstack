@@ -1,15 +1,6 @@
 import httpServer from 'http';
 import { handleApi1Graphql } from './handleGraphql';
 
-// fetch('http://localhost:4444/graphql', {
-//   method: 'POST',
-//   body: JSON.stringify({
-//     query: `{createArticle(topic:"technology") {result}}`
-//   })
-// })
-//   .then(res1 => res1.json())
-//   .then(res2 => console.log(res2))
-
 const PORT = process.env.PORT || 3333;
 
 httpServer

@@ -42,7 +42,6 @@ const DEMO_RESULTS: TResults = {
 };
 
 function getPreviousResults({ userId }: { userId: string }) {
-  // return fetch('http://localhost:4444/ping').then(res => res.json())
   return Promise.resolve(DEMO_RESULTS.data[userId]);
 }
 

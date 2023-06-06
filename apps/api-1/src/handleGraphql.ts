@@ -38,9 +38,17 @@ const GRAPHQL_QUERY_RESOLVER = {
   makeCard: async ({ name, age, habits }) => {
     const ageText = YEARS_TEXT_BY_DESCRIPTION[age.toUpperCase()];
     const habitsText = getHabitsText(habits);
-    const aiRequest = `Generate a birthday card wish for a boy named ${name}, who is about ${ageText} years old, and likes ${habitsText}`;
+    const aiInstructions = `Generate a birthday card wish for a boy named ${name}, who is about ${ageText} years old, and likes ${habitsText}`;
 
-    return aiRequest;
+    const aiRequest = await fetch('http://localhost:4444/graphql', {
+      method: 'POST',
+      body: JSON.stringify({
+        query: `{createArticle(instructions:"${aiInstructions}") {result}}`,
+      }),
+    });
+    const aiResponse = await aiRequest.json();
+
+    return aiResponse.data.createArticle.result;
   },
 };
 
