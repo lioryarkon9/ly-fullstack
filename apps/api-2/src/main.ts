@@ -1,5 +1,5 @@
 import httpServer from 'http';
-import {handleApi2Graphql} from './handleGraphql'
+import { handleApi2Graphql } from './handleGraphql';
 
 const PORT = process.env.PORT || 4444;
 
@@ -8,7 +8,7 @@ httpServer
     console.log('Incoming request', request.url, new Date(Date.now()).toJSON());
 
     if (request.url === '/graphql' && request.method === 'POST') {
-      handleApi2Graphql({request, response})
+      handleApi2Graphql({ request, response });
 
       return;
     }

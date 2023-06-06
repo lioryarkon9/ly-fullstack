@@ -2,7 +2,12 @@
   "name": "@ly-fullstack/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "pretty-client": "npx prettier --write ./apps/client/app",
+    "pretty-api-1": "npx prettier --write ./apps/api-1/src",
+    "pretty-api-2": "npx prettier --write ./apps/api-2/src",
+    "pretty-all": "npm run-script pretty-client && npm run-script pretty-api-1 && npm run-script pretty-api-2"
+  },
   "private": true,
   "dependencies": {
     "@nx/next": "16.2.2",

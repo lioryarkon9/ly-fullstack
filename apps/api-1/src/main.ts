@@ -1,5 +1,5 @@
 import httpServer from 'http';
-import {handleApi1Graphql} from './handleGraphql';
+import { handleApi1Graphql } from './handleGraphql';
 
 // fetch('http://localhost:4444/graphql', {
 //   method: 'POST',
@@ -17,14 +17,13 @@ httpServer
     console.log('Incoming request', request.url, new Date(Date.now()).toJSON());
 
     if (request.url === '/graphql' && request.method === 'POST') {
-      handleApi1Graphql({request, response})
+      handleApi1Graphql({ request, response });
 
       return;
     }
 
-    response.end('INVALID_REQUEST')
+    response.end('INVALID_REQUEST');
   })
   .listen(PORT);
-
 
 console.log(`http server running on port '${PORT}'`);

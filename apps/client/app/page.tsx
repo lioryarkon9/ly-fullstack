@@ -1,4 +1,6 @@
 import React from 'react';
+import { CreateGreetingCard } from './CreateGreetingCard';
+import { ToggleDialogButton } from './ToggleDialogButton';
 
 type TBirthdayCard = {
   id: string;
@@ -55,7 +57,7 @@ export default async function Index() {
     userId: 'abb8345f-69b7-4c46-b465-51977b1cf388',
   });
   const uiPreviousResults = Object.values(previousResults);
-  
+
   return (
     <div>
       <div className="wrapper">
@@ -65,7 +67,11 @@ export default async function Index() {
               <span> Hello there, {user.name}</span>
               Welcome to birthday cards generator 👋
             </h1>
+
+            <ToggleDialogButton />
           </div>
+
+          <CreateGreetingCard />
 
           <div id="commands" className="rounded shadow">
             <h2>Previous birthday cards</h2>

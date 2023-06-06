@@ -1,5 +1,5 @@
 import { buildSchema } from 'graphql';
-import {graphqlHandler} from '../../../libs/graphql-handler/src/index';
+import { graphqlHandler } from '../../../libs/graphql-handler/src/index';
 
 const GRAPHQL_SCHEMA = buildSchema(`
   type CreateArticle {
@@ -10,9 +10,14 @@ const GRAPHQL_SCHEMA = buildSchema(`
   }
 `);
 const GRAPHQL_QUERY_RESOLVER = {
-  createArticle: ({topic}) => ({result: `got topic: '${topic}'`}),
+  createArticle: ({ topic }) => ({ result: `got topic: '${topic}'` }),
 };
 
-export function handleApi2Graphql({request, response}) {
-  graphqlHandler({request, response, schema: GRAPHQL_SCHEMA, queryResolver: GRAPHQL_QUERY_RESOLVER})
+export function handleApi2Graphql({ request, response }) {
+  graphqlHandler({
+    request,
+    response,
+    schema: GRAPHQL_SCHEMA,
+    queryResolver: GRAPHQL_QUERY_RESOLVER,
+  });
 }
