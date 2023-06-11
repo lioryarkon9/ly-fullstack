@@ -1,10 +1,15 @@
 'use client';
 import React from 'react';
+import { useMutation, useQueryClient } from 'react-query';
 
 interface FormData {
   name: string;
   age: string;
   habits: string[];
+}
+
+interface IProps {
+  userId: string;
 }
 
 const INITIAL_PERSON: FormData = {
@@ -13,9 +18,29 @@ const INITIAL_PERSON: FormData = {
   habits: [],
 };
 
-export const CreateGreetingCard: React.FC = () => {
+export const CreateGreetingCard: React.FC<IProps> = ({ userId }) => {
   const [birthdayPerson, setBirthdayPerson] =
     React.useState<FormData>(INITIAL_PERSON);
+  const queryClient = useQueryClient();
+  const createGreeingCardQuery = useMutation({
+    mutationKey: ['create-greeting-card', userId],
+    mutationFn: () =>
+      fetch('/api/createCard', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: birthdayPerson.name,
+          age: birthdayPerson.age,
+          selectedHabits: birthdayPerson.habits,
+        }),
+      }).then((result) => result.json()),
+    onSuccess: (data) => {
+      console.log(data);
+      document.querySelector('#createGreetingCardDialog')?.close();
+      resetForm();
+      queryClient.invalidateQueries(['initial-greetings', userId]);
+    },
+    onError: (error) => alert(error),
+  });
 
   const resetForm = () => setBirthdayPerson(INITIAL_PERSON);
 
@@ -45,19 +70,7 @@ export const CreateGreetingCard: React.FC = () => {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    fetch('/api/createCard', {
-      method: 'POST',
-      body: JSON.stringify({
-        name: birthdayPerson.name,
-        age: birthdayPerson.age,
-        selectedHabits: birthdayPerson.habits,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => console.log('res: ', res))
-      .then(() => document.querySelector('#createGreetingCardDialog')?.close())
-      .then(() => resetForm());
+    createGreeingCardQuery.mutate();
   };
 
   const isValidForm =
