@@ -1,11 +1,9 @@
 'use client';
 import React from 'react';
-import { TBirthdayCard } from './types';
 import { TResults } from './types';
 import { useQuery } from 'react-query';
 
 type TProps = {
-  // greetings: TBirthdayCard[];
   userId: string;
 };
 
@@ -58,11 +56,3 @@ export const GreetingCards: React.FC<TProps> = ({ userId }) => {
     </>
   );
 };
-
-// export const GreetingCardsWrapper: React.FC<TProps> = ({greetings, userId}) => {
-//   return (
-//     <QueryClientProvider client={queryClient}>
-//       <GreetingCards greetings={greetings} userId={userId} />
-//     </QueryClientProvider>
-//   )
-// }
