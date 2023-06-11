@@ -1,7 +1,7 @@
 {
-  "name": "client",
+  "name": "bday-greetings",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/client",
+  "sourceRoot": "apps/bday-greetings",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,12 +9,12 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/client",
-        "outputPath": "dist/apps/client"
+        "root": "apps/bday-greetings",
+        "outputPath": "dist/apps/bday-greetings"
       },
       "configurations": {
         "development": {
-          "outputPath": "apps/client"
+          "outputPath": "apps/bday-greetings"
         },
         "production": {}
       }
@@ -23,16 +23,16 @@
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "client:build",
+        "buildTarget": "bday-greetings:build",
         "dev": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "client:build:development",
+          "buildTarget": "bday-greetings:build:development",
           "dev": true
         },
         "production": {
-          "buildTarget": "client:build:production",
+          "buildTarget": "bday-greetings:build:production",
           "dev": false
         }
       }
@@ -40,14 +40,14 @@
     "export": {
       "executor": "@nx/next:export",
       "options": {
-        "buildTarget": "client:build:production"
+        "buildTarget": "bday-greetings:build:production"
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/client/jest.config.ts",
+        "jestConfig": "apps/bday-greetings/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -61,7 +61,7 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/client/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/bday-greetings/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },

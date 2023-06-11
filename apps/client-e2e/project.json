@@ -8,12 +8,12 @@
       "executor": "@nx/cypress:cypress",
       "options": {
         "cypressConfig": "apps/client-e2e/cypress.config.ts",
-        "devServerTarget": "client:serve:development",
+        "devServerTarget": "bday-greetings:serve:development",
         "testingType": "e2e"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "client:serve:production"
+          "devServerTarget": "bday-greetings:serve:production"
         }
       }
     },
@@ -26,5 +26,5 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["client"]
+  "implicitDependencies": ["bday-greetings"]
 }
