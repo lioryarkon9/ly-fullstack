@@ -1,7 +1,7 @@
 {
-  "name": "api-2",
+  "name": "instruction-generator",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/api-2/src",
+  "sourceRoot": "apps/instruction-generator/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -10,12 +10,12 @@
       "defaultConfiguration": "production",
       "options": {
         "platform": "node",
-        "outputPath": "dist/apps/api-2",
+        "outputPath": "dist/apps/instruction-generator",
         "format": ["cjs"],
         "bundle": false,
-        "main": "apps/api-2/src/main.ts",
-        "tsConfig": "apps/api-2/tsconfig.app.json",
-        "assets": ["apps/api-2/src/assets"],
+        "main": "apps/instruction-generator/src/main.ts",
+        "tsConfig": "apps/instruction-generator/tsconfig.app.json",
+        "assets": ["apps/instruction-generator/src/assets"],
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
@@ -40,14 +40,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "api-2:build"
+        "buildTarget": "instruction-generator:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "api-2:build:development"
+          "buildTarget": "instruction-generator:build:development"
         },
         "production": {
-          "buildTarget": "api-2:build:production"
+          "buildTarget": "instruction-generator:build:production"
         }
       }
     },
@@ -55,14 +55,14 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/api-2/**/*.ts"]
+        "lintFilePatterns": ["apps/instruction-generator/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/api-2/jest.config.ts",
+        "jestConfig": "apps/instruction-generator/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {

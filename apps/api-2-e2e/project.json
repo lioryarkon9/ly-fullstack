@@ -1,7 +1,7 @@
 {
   "name": "api-2-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "implicitDependencies": ["api-2"],
+  "implicitDependencies": ["ai"],
   "targets": {
     "e2e": {
       "executor": "@nx/jest:jest",

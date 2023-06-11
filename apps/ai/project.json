@@ -1,7 +1,7 @@
 {
-  "name": "api-1",
+  "name": "ai",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/api-1/src",
+  "sourceRoot": "apps/ai/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -10,12 +10,12 @@
       "defaultConfiguration": "production",
       "options": {
         "platform": "node",
-        "outputPath": "dist/apps/api-1",
+        "outputPath": "dist/apps/ai",
         "format": ["cjs"],
         "bundle": false,
-        "main": "apps/api-1/src/main.ts",
-        "tsConfig": "apps/api-1/tsconfig.app.json",
-        "assets": ["apps/api-1/src/assets"],
+        "main": "apps/ai/src/main.ts",
+        "tsConfig": "apps/ai/tsconfig.app.json",
+        "assets": ["apps/ai/src/assets"],
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
@@ -40,14 +40,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "api-1:build"
+        "buildTarget": "ai:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "api-1:build:development"
+          "buildTarget": "ai:build:development"
         },
         "production": {
-          "buildTarget": "api-1:build:production"
+          "buildTarget": "ai:build:production"
         }
       }
     },
@@ -55,14 +55,14 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/api-1/**/*.ts"]
+        "lintFilePatterns": ["apps/ai/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/api-1/jest.config.ts",
+        "jestConfig": "apps/ai/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
