@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import {DEMO_RESULTS} from './demo_data';
+import { DEMO_RESULTS } from './demo_data';
 import { useQuery } from 'react-query';
 
 type TProps = {

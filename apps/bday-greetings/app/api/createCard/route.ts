@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import {DEMO_RESULTS} from '../../demo_data';
+import { DEMO_RESULTS } from '../../demo_data';
 
 export async function POST(request: Request) {
   const body = await request.json();
