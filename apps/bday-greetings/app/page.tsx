@@ -2,11 +2,7 @@ import React from 'react';
 import { CreateGreetingCard } from './CreateGreetingCard';
 import { ToggleDialogButton } from './ToggleDialogButton';
 import { GreetingCards } from './GreetingCards';
-import { DEMO_RESULTS, DEMO_USERS } from './demo_data';
-
-function getPreviousResults({ userId }: { userId: string }) {
-  return Promise.resolve(DEMO_RESULTS.data[userId]);
-}
+import { DEMO_USERS } from './demo_data';
 
 function getUser(id: string) {
   return Promise.resolve(DEMO_USERS[id]);

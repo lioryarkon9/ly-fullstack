@@ -34,7 +34,7 @@ export const CreateGreetingCard: React.FC<IProps> = ({ userId }) => {
         }),
       }).then((result) => result.json()),
     onSuccess: (data) => {
-      console.log(data);
+      console.log(data)
       document.querySelector('#createGreetingCardDialog')?.close();
       resetForm();
       queryClient.invalidateQueries(['initial-greetings', userId]);
