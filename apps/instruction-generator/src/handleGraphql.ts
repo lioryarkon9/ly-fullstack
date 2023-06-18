@@ -1,6 +1,6 @@
 import { buildSchema } from 'graphql';
 import { graphqlHandler } from '../../../libs/graphql-handler/src/index';
-import crypto from 'crypto'
+import crypto from 'crypto';
 
 const YEARS_TEXT_BY_DESCRIPTION: { [key: string]: string } = {
   BABY: '0-2',
@@ -54,12 +54,12 @@ const GRAPHQL_QUERY_RESOLVER = {
     });
     const aiResponse = await aiRequest.json();
 
-    const nowDate = new Date(Date.now())
+    const nowDate = new Date(Date.now());
     const result = {
       id: crypto.randomUUID(),
       content: aiResponse.data.createGreeting.result,
-      timestamp: nowDate.toJSON()
-    }
+      timestamp: nowDate.toJSON(),
+    };
 
     return result;
   },

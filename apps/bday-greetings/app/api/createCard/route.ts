@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import {firbaseApp} from 'libs/remote-storage/src'
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { firbaseApp } from 'libs/remote-storage/src';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
 
 const db = getFirestore(firbaseApp);
 
@@ -18,10 +18,14 @@ export async function POST(request: Request) {
   });
   const createCardResponse = await createCardRequest.json();
 
-  console.log('createCardResponse: ', createCardResponse)
+  console.log('createCardResponse: ', createCardResponse);
 
   // await setDoc(doc(db, ['greetings', body.userId, createCardResponse.data.makeCard.id]), createCardResponse.data.makeCard, {merge: true});
-  await setDoc(doc(db, `greetings/${body.userId}`), {[createCardResponse.data.makeCard.id]: createCardResponse.data.makeCard}, {merge: true});
+  await setDoc(
+    doc(db, `greetings/${body.userId}`),
+    { [createCardResponse.data.makeCard.id]: createCardResponse.data.makeCard },
+    { merge: true }
+  );
 
   return NextResponse.json({ response: createCardResponse });
 }
