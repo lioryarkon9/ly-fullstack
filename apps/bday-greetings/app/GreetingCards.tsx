@@ -7,6 +7,14 @@ type TProps = {
 };
 
 const DATE_FORMAT = 'numeric';
+const dateFormatter = new Intl.DateTimeFormat('he', {
+  year: DATE_FORMAT,
+  month: DATE_FORMAT,
+  day: DATE_FORMAT,
+  hour: DATE_FORMAT,
+  minute: DATE_FORMAT,
+  second: DATE_FORMAT,
+});
 
 export const GreetingCards: React.FC<TProps> = ({ userId }) => {
   const { data, isLoading, isFetching, error } = useQuery({
@@ -16,14 +24,7 @@ export const GreetingCards: React.FC<TProps> = ({ userId }) => {
         result.json()
       ),
   });
-  const dateFormatter = new Intl.DateTimeFormat('he', {
-    year: DATE_FORMAT,
-    month: DATE_FORMAT,
-    day: DATE_FORMAT,
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-  });
+
   const getGreetingDate = (greetingDate: any) =>
     dateFormatter.format(new Date(greetingDate));
 
