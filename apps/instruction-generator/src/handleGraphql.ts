@@ -1,5 +1,6 @@
 import { buildSchema } from 'graphql';
 import { graphqlHandler } from '../../../libs/graphql-handler/src/index';
+import crypto from 'crypto'
 
 const YEARS_TEXT_BY_DESCRIPTION: { [key: string]: string } = {
   BABY: '0-2',
@@ -9,8 +10,13 @@ const YEARS_TEXT_BY_DESCRIPTION: { [key: string]: string } = {
 };
 
 const GRAPHQL_SCHEMA = buildSchema(`
+  type Card {
+    id: String!
+    content: String!
+    timestamp: String!
+  }
   type Query {
-    makeCard(name: String!, age: String!, habits: [String!], otherHabit: String): String!
+    makeCard(name: String!, age: String!, habits: [String!], otherHabit: String): Card!
   }
 `);
 
@@ -43,12 +49,19 @@ const GRAPHQL_QUERY_RESOLVER = {
     const aiRequest = await fetch('http://localhost:4444/graphql', {
       method: 'POST',
       body: JSON.stringify({
-        query: `{createArticle(instructions:"${aiInstructions}") {result}}`,
+        query: `{createGreeting(instructions:"${aiInstructions}") {result}}`,
       }),
     });
     const aiResponse = await aiRequest.json();
 
-    return aiResponse.data.createArticle.result;
+    const nowDate = new Date(Date.now())
+    const result = {
+      id: crypto.randomUUID(),
+      content: aiResponse.data.createGreeting.result,
+      timestamp: nowDate.toJSON()
+    }
+
+    return result;
   },
 };
 

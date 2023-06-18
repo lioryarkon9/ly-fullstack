@@ -28,6 +28,7 @@ export const CreateGreetingCard: React.FC<IProps> = ({ userId }) => {
       fetch('/api/createCard', {
         method: 'POST',
         body: JSON.stringify({
+          userId,
           name: birthdayPerson.name,
           age: birthdayPerson.age,
           selectedHabits: birthdayPerson.habits,

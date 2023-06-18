@@ -1,0 +1,26 @@
+{
+  "name": "remote-storage",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/remote-storage/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/remote-storage",
+        "main": "libs/remote-storage/src/index.ts",
+        "tsConfig": "libs/remote-storage/tsconfig.lib.json",
+        "assets": ["libs/remote-storage/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/remote-storage/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
