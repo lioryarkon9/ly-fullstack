@@ -37,7 +37,7 @@ const GRAPHQL_QUERY_RESOLVER = {
       headers: {
         'Content-Type': 'application/json',
         Authorization:
-          'Bearer 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',
+          '',
       },
       body: JSON.stringify({
         model: 'text-davinci-003',
