@@ -20,7 +20,6 @@ export async function POST(request: Request) {
 
   console.log('createCardResponse: ', createCardResponse);
 
-  // await setDoc(doc(db, ['greetings', body.userId, createCardResponse.data.makeCard.id]), createCardResponse.data.makeCard, {merge: true});
   await setDoc(
     doc(db, `greetings/${body.userId}`),
     { [createCardResponse.data.makeCard.id]: createCardResponse.data.makeCard },

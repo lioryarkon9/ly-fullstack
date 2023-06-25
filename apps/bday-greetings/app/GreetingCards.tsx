@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { useQuery } from 'react-query';
+import { TBirthdayCard } from './types';
 
 type TProps = {
   userId: string;
@@ -16,8 +17,28 @@ const dateFormatter = new Intl.DateTimeFormat('he', {
   second: DATE_FORMAT,
 });
 
+function byTimestampDescending(data: null | TBirthdayCard[]) {
+  if (!data) {
+    return null;
+  }
+
+  return Array.from(
+    data.sort(({ timestamp: timestampA }, { timestamp: timestampB }) => {
+      if (timestampA > timestampB) {
+        return -1;
+      }
+
+      if (timestampB > timestampA) {
+        return 1;
+      }
+
+      return 0;
+    })
+  );
+}
+
 export const GreetingCards: React.FC<TProps> = ({ userId }) => {
-  const { data, isLoading, isFetching, error } = useQuery({
+  const { data } = useQuery({
     queryKey: ['initial-greetings', userId],
     queryFn: () =>
       fetch(`/api/getGreetings?userId=${userId}`).then((result) =>
@@ -25,12 +46,13 @@ export const GreetingCards: React.FC<TProps> = ({ userId }) => {
       ),
   });
 
+  const uiGreetings = byTimestampDescending(data);
   const getGreetingDate = (greetingDate: any) =>
     dateFormatter.format(new Date(greetingDate));
 
   return (
     <>
-      {data?.map((greeting: any) => (
+      {uiGreetings?.map((greeting: TBirthdayCard) => (
         <details key={greeting.id}>
           <summary>
             <svg

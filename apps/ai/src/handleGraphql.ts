@@ -12,17 +12,13 @@ const GRAPHQL_SCHEMA = buildSchema(`
   }
 `);
 const GRAPHQL_QUERY_RESOLVER = {
-  // createArticle: ({ instructions }) => ({
-  //   result: DEMO_RESPONSE,
-  // }),
   createGreeting: async ({ instructions }) => {
     console.log('instructions: ', instructions);
     const aiRequest = await fetch('https://api.openai.com/v1/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization:
-          '',
+        Authorization: '',
       },
       body: JSON.stringify({
         model: 'text-davinci-003',
@@ -35,8 +31,6 @@ const GRAPHQL_QUERY_RESOLVER = {
     const aiResponse = await aiRequest.json();
 
     console.log('aiResponse: ', aiResponse);
-
-    // return DEMO_RESPONSE
 
     return {
       result: aiResponse.choices[0].text,
