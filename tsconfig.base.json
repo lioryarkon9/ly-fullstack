@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ly-fullstack/graphql-handler": ["libs/graphql-handler/src/index.ts"]
+      "@ly-fullstack/graphql-handler": ["libs/graphql-handler/src/index.ts"],
+      "@ly-fullstack/remote-storage": ["libs/remote-storage/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
